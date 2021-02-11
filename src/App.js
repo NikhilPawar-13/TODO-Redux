@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./styles.css";
+import Header from "./components/header";
+import { Route, Switch } from "react-router-dom";
+import TodosList from "./components/TodosList";
+import LoginForm from "./components/LoginForm";
+import Logout from "./components/Logout";
+import visibilityFilter from "./components/visibilityFilter";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/todolist" component={TodosList} />
+          <Route exact path="/visibilityfilter" component={visibilityFilter} />
+          <Route exact path="/logout" component={Logout} />
+        </Switch>
+      </div>
+    );
+  }
 }
-
 export default App;
